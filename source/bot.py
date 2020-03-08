@@ -25,14 +25,14 @@ class Bot():
     def crawling(self, _time = 60, _count = -1):
 
         ## 브라우저 열기
-        # driver = self.open_browser(self.crawl_site)
+        driver = self.open_browser(self.crawl_site)
 
         ##TODO 아침 06:00마다 마스크 리스트 정보 업데이트하기
         ## 마스크 리스트 초기화
-        # self.init_mask_list(driver)
+        self.init_mask_list(driver)
 
         ## 마스크 정보 저장하기
-        # self.save_update_to_json()
+        self.save_update_to_json()
 
         ## 마스크 정보 읽어오기
         self.get_info_from_json()
@@ -72,7 +72,7 @@ class Bot():
 
         ## 마스크 판매시간 10분전이면 알림을 보내기
         diff = (mask_time - now).seconds // 60
-        return ((mask_time > now) and (diff <= 10))
+        return ((mask_time >= now) and (diff <= 10))
 
 
     ## mask_list를 json에 저장
@@ -103,14 +103,8 @@ class Bot():
         dic = {name:{ 'name':name, 'context':context, 'link':link, 'sell_time':sell_time, 'alerted':False}}
         return dic
 
-        ## 그냥 str.split이용
-        # e = raw_str.find(']')
-        # name = raw_str[1:e]
-        # context = raw_str[e+1:]
-
-
     ## mask_list 초기화
-    ## bot 생성시 / 하루 한번만 실행
+    ## TODO bot 생성시 / 하루 한번만 실행
     def init_mask_list(self, _driver):
         ## soup 가져오기
         html, soup = self.get_html(_driver)
@@ -122,12 +116,6 @@ class Bot():
             d = self.get_data_dictionary(data)
             if d : self.mask_list = {**self.mask_list, **self.get_data_dictionary(data)}
 
-
-        ##TODO raw_data에서 판매 시간 뽑기
-
-
-        pass
-
     ## 웹페이지 열기
     def open_browser(self, _link):
         ##TODO headless browser로 바꾸기
@@ -135,6 +123,7 @@ class Bot():
         driver.set_page_load_timeout(60)
         driver.get(_link)
         return driver
+
 
     ## 페이지의 내용을 조작할수 있게 html과 bs4 결과를 리턴
     def get_html(self, _driver):
@@ -148,26 +137,3 @@ class Bot():
     def get_info_from_json(self):
         with open(self.json_file, encoding='utf-8') as masks:
             self.mask_list = json.load(masks)
-
-    
-"""==============================================="""
- ## 크롤링할 사이트 브라우저로 열고 (commu,driver) 튜플 리턴
-    # def open_browser(self, commu, _key):
-
-    #     options = webdriver.ChromeOptions()
-    #     options.add_argument('headless')
-    #     options.add_argument('window-size=1920x1080')
-    #     options.add_argument('no-sandbox')
-    #     options.add_argument("disable-gpu")
-    #     options.add_argument('autoplay-policy=no-user-gesture-required')
-    #     options.add_argument("disable-features=AutoplayIgnoreWebAudio")
-    #     options.add_argument("disable-features=PreloadMediaEngagementData,AutoplayIgnoreWebAudio, MediaEngagementBypassAutoplayPolicies")
-    #     options.add_argument("log-level=2") ##사이트 로그 안 보기
-
-    #     ## headless chrome으로 돌린다
-    #     driver = webdriver.Chrome('./assets/chromedriver_win32/chromedriver.exe', options=options)
-    #     # driver = webdriver.Chrome('./assets/chromedriver_win32/chromedriver.exe')
-
-    #     driver.set_page_load_timeout(15)
-    #     driver.get(commu['link'])
-    #     return (_key,driver)

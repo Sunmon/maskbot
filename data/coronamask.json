@@ -20,13 +20,6 @@
 		"sell_time": "2020/03/09 10:00",
 		"alerted": false
 	},
-	"라오메뜨": {
-		"name": "라오메뜨",
-		"context": " KF94 황사방역마스크 중형 1봉(5매입)",
-		"link": "https://store.kakao.com/laomete/products/55563134",
-		"sell_time": null,
-		"alerted": false
-	},
 	"네이버 스토어": {
 		"name": "네이버 스토어",
 		"context": " KF94 휴그린 미세먼지 방역마스크 중형 (1매)",
@@ -38,21 +31,28 @@
 		"name": "웰퓨어",
 		"context": " 숨프리 황사 미세먼지마스크 KF94 KF80 5매 대형 소형 성인용 아동용",
 		"link": "https://smartstore.naver.com/desind/products/4844267787",
-		"sell_time": "2020/03/09 00:00",
+		"sell_time": null,
+		"alerted": false
+	},
+	"라오메뜨": {
+		"name": "라오메뜨",
+		"context": " KF94 황사방역마스크 중형 1봉(5매입)",
+		"link": "https://store.kakao.com/laomete/products/55563134",
+		"sell_time": null,
 		"alerted": false
 	},
 	"닥터퓨리": {
 		"name": "닥터퓨리",
 		"context": "  KF94 미세먼지 황사마스크 (30매)",
 		"link": "https://smartstore.naver.com/mfbshop/products/4072573492",
-		"sell_time": "2020/03/09 00:36",
+		"sell_time": null,
 		"alerted": false
 	},
 	"나록스": {
 		"name": "나록스",
 		"context": " 황사마스크 KF94/KF80 대형 (5매)",
 		"link": "https://smartstore.naver.com/ygfac/products/3905641271",
-		"sell_time": "2020/03/09 00:45",
+		"sell_time": null,
 		"alerted": false
 	},
 	"웰킵스몰": {
