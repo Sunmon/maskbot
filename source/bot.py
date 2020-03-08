@@ -15,7 +15,7 @@ from alerter import Alerter
 
 class Bot():
     def __init__(self):
-        self.crawl_site = 'https://coronamask.kr/'
+        self.crawl_site = 'https://coronamask.kr'
         self.json_file = '../data/coronamask.json'
         self.mask_list = {}     # 크롤링할 마스크 사이트 정보 {name: {content, link, sell_time}}
         self.alerter = Alerter()
@@ -25,7 +25,7 @@ class Bot():
     def crawling(self, _time = 60, _count = -1):
 
         ## 브라우저 열기
-        driver = self.open_browser(self.crawl_site)
+        driver = self.open_browser('https://coronamask.kr')
 
         ##TODO 아침 06:00마다 마스크 리스트 정보 업데이트하기
         ## 마스크 리스트 초기화
@@ -118,21 +118,31 @@ class Bot():
 
     ## 웹페이지 열기
     def open_browser(self, _link):
+        _link = 'https://www.naver.com'
+        #_link = 'https://coronamask.kr'
+        _link = 'https://center-pf.kakao.com/_xgWysxb/messages/new/feed'
+        _link = 'https://coronamask.kr'
+
         ##TODO headless browser로 바꾸기
         options = webdriver.ChromeOptions()
         options.add_argument('--headless')
-        options.add_argument('--window-size=1920x1080')
-        #options.add_argument('disable-gpu')
-        options.add_argument('--disable-dev-shm-usage')
-        options.add_argument('--single-process')
         options.add_argument('--no-sandbox')
         options.add_argument('--disable-gpu')
-
+        options.add_argument('--single-process')
+        options.add_argument('--dissable-dev-shm-usage')
+        options.add_argument("user-agent=Mozilla/5.0 (Macintosh; Intel Mac OS X 10_12_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/61.0.3163.100 Safari/537.36")
         #driver = webdriver.Chrome('chromedriver', chrome_options=options)
         driver = webdriver.Chrome('../assets/chromedriver_linux64/chromedriver', options=options) ## linux
         #driver = webdriver.Chrome('../assets/chromedriver_win32/chromedriver.exe', chrome_options=options) ## window
         driver.set_page_load_timeout(60)
-        driver.get(_link)
+        try:
+            driver.get(_link)
+        except Exception :
+            print("timeout error")
+        else:
+            print("page open")
+
+        ## driver.get(_link)
         return driver
 
 

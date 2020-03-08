@@ -21,7 +21,16 @@ class Alerter():
     
     ## 로그인한다 
     def __login(self):
-        self.driver = webdriver.Chrome('../assets/chromedriver_win32/chromedriver.exe')
+        options = webdriver.ChromeOptions()
+        options.add_argument('headless')
+        options.add_argument('--no-sandbox')
+        options.add_argument('--single-process')
+        options.add_argument('--disable-dev-shm-usage')
+        options.add_argument('--disable-gpu')
+        options.add_argument('user-agent=Mozilla/5.0 (Macintosh; Intel Mac OS X 10_12_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/61.0.3163.100 Safari/537.36')
+        self.driver = webdriver.Chrome('../assets/chromedriver_linux64/chromedriver', options=options)
+
+        #self.driver = webdriver.Chrome('../assets/chromedriver_win32/chromedriver.exe')
         self.driver.implicitly_wait(3)
         self.driver.get(self.LOGIN_INFO['link'])
         self.driver.find_element_by_id('id_email_2').send_keys(self.LOGIN_INFO['id'])
