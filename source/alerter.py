@@ -21,25 +21,32 @@ class Alerter():
     
     ## 로그인한다 
     def __login(self):
+        print("start login")
         options = webdriver.ChromeOptions()
         options.add_argument('headless')
         options.add_argument('--no-sandbox')
-        options.add_argument('--single-process')
-        options.add_argument('--disable-dev-shm-usage')
+        #options.add_argument('--single-process')
+        #options.add_argument('--disable-dev-shm-usage')
         options.add_argument('--disable-gpu')
-        options.add_argument('user-agent=Mozilla/5.0 (Macintosh; Intel Mac OS X 10_12_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/61.0.3163.100 Safari/537.36')
+        #options.add_argument('user-agent=Mozilla/5.0 (Macintosh; Intel Mac OS X 10_12_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/61.0.3163.100 Safari/537.36')
         self.driver = webdriver.Chrome('../assets/chromedriver_linux64/chromedriver', options=options)
-
+        #self.driver = webdriver.Chrome('../assets/chromedriver_linux64/chromedriver')
+        print("driver opened")
         #self.driver = webdriver.Chrome('../assets/chromedriver_win32/chromedriver.exe')
-        self.driver.implicitly_wait(3)
-        self.driver.get(self.LOGIN_INFO['link'])
+        self.driver.get('https://www.naver.com')
+        #self.driver.get(self.LOGIN_INFO['link'])
+        self.driver.set_page_load_timeout(10)
+
+        print("login page load")
+        return
         self.driver.find_element_by_id('id_email_2').send_keys(self.LOGIN_INFO['id'])
         time.sleep(2)
         self.driver.find_element_by_id('id_password_3').send_keys(self.LOGIN_INFO['password'])
         time.sleep(2)
         self.driver.find_element_by_xpath('/html/body/div[1]/div[2]/div/div/div/form/fieldset/div[8]/button').click()
         time.sleep(1)
-
+        
+        print("login ok")
         ##TODO 로그인 실패 처리하기
     
     ## 카카오 로그인 정보 초기화
@@ -117,5 +124,5 @@ class Alerter():
     ## msg_list로 받은 모든 메세지 전송
     def send_all_msgs(self, _msg_list):
         self.__login()
-        self.__send_alert(_msg_list)
+        # self.__send_alert(_msg_list)
         
