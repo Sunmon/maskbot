@@ -21,7 +21,7 @@ class Alerter():
     
     ## 로그인한다 
     def __login(self):
-        self.driver = webdriver.Chrome('./assets/chromedriver_win32/chromedriver.exe')
+        self.driver = webdriver.Chrome('../assets/chromedriver_win32/chromedriver.exe')
         self.driver.implicitly_wait(3)
         self.driver.get(self.LOGIN_INFO['link'])
         self.driver.find_element_by_id('id_email_2').send_keys(self.LOGIN_INFO['id'])
@@ -35,7 +35,7 @@ class Alerter():
     
     ## 카카오 로그인 정보 초기화
     def __set_login_info(self, _site):
-        with open('./data/login_info.json') as json_file:
+        with open('../data/login_info.json') as json_file:
             json_data = json.load(json_file)
             self.LOGIN_INFO['id'] = json_data[_site]["id"]
             self.LOGIN_INFO['password']=json_data[_site]["password"]

@@ -16,7 +16,7 @@ from alerter import Alerter
 class Bot():
     def __init__(self):
         self.crawl_site = 'https://coronamask.kr/'
-        self.json_file = './data/coronamask.json'
+        self.json_file = '../data/coronamask.json'
         self.mask_list = {}     # 크롤링할 마스크 사이트 정보 {name: {content, link, sell_time}}
         self.alerter = Alerter()
         pass
@@ -41,17 +41,17 @@ class Bot():
         msg_list = [mask for mask in self.mask_list.values() if self.is_time_to_alert(mask)]
 
         ## 알림 메세지 보내기
-        if msg_list:
-            try:
-                self.alerter.send_all_msgs(msg_list)
-            except Exception as e:
-                print(e)
-            else:
-                ## 알람 보낸 애들은 alerted = True로 전환
-                for dic in msg_list:
-                    n = dic['name']
-                    self.mask_list[n]['alerted']=True
-                self.save_update_to_json()
+#        if msg_list:
+#            try:
+#                self.alerter.send_all_msgs(msg_list)
+#            except Exception as e:
+#                print(e)
+#            else:
+#                ## 알람 보낸 애들은 alerted = True로 전환
+#                for dic in msg_list:
+#                    n = dic['name']
+#                    self.mask_list[n]['alerted']=True
+#                self.save_update_to_json()
 
     ## 알림 보낼 수 있는 시간인가 확인하여 true/false 리턴
     def is_time_to_alert(self, mask):
@@ -119,7 +119,18 @@ class Bot():
     ## 웹페이지 열기
     def open_browser(self, _link):
         ##TODO headless browser로 바꾸기
-        driver = webdriver.Chrome('./assets/chromedriver_win32/chromedriver.exe')
+        options = webdriver.ChromeOptions()
+        options.add_argument('--headless')
+        options.add_argument('--window-size=1920x1080')
+        #options.add_argument('disable-gpu')
+        options.add_argument('--disable-dev-shm-usage')
+        options.add_argument('--single-process')
+        options.add_argument('--no-sandbox')
+        options.add_argument('--disable-gpu')
+
+        #driver = webdriver.Chrome('chromedriver', chrome_options=options)
+        driver = webdriver.Chrome('../assets/chromedriver_linux64/chromedriver', options=options) ## linux
+        #driver = webdriver.Chrome('../assets/chromedriver_win32/chromedriver.exe', chrome_options=options) ## window
         driver.set_page_load_timeout(60)
         driver.get(_link)
         return driver
