@@ -14,6 +14,9 @@ import json
 import emoji
 from bs4 import BeautifulSoup
 from selenium import webdriver
+from selenium.webdriver.common.by import By
+from selenium.webdriver.support.ui import WebDriverWait
+from selenium.webdriver.support.expected_conditions import presence_of_element_located
 class Alerter():
     def __init__(self):
         self.LOGIN_INFO={'id':'', 'password':'', 'link':''}
@@ -21,7 +24,6 @@ class Alerter():
     
     ## 로그인한다 
     def __login(self):
-        print("start login")
         options = webdriver.ChromeOptions()
         options.add_argument('headless')
         options.add_argument('--no-sandbox')
@@ -31,22 +33,15 @@ class Alerter():
         #options.add_argument('user-agent=Mozilla/5.0 (Macintosh; Intel Mac OS X 10_12_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/61.0.3163.100 Safari/537.36')
         self.driver = webdriver.Chrome('../assets/chromedriver_linux64/chromedriver', options=options)
         #self.driver = webdriver.Chrome('../assets/chromedriver_linux64/chromedriver')
-        print("driver opened")
-        #self.driver = webdriver.Chrome('../assets/chromedriver_win32/chromedriver.exe')
-        self.driver.get('https://www.naver.com')
-        #self.driver.get(self.LOGIN_INFO['link'])
-        self.driver.set_page_load_timeout(10)
-
-        print("login page load")
-        return
+        self.driver.get(self.LOGIN_INFO['link'])
+        self.driver.set_page_load_timeout(30)
         self.driver.find_element_by_id('id_email_2').send_keys(self.LOGIN_INFO['id'])
         time.sleep(2)
         self.driver.find_element_by_id('id_password_3').send_keys(self.LOGIN_INFO['password'])
         time.sleep(2)
         self.driver.find_element_by_xpath('/html/body/div[1]/div[2]/div/div/div/form/fieldset/div[8]/button').click()
         time.sleep(1)
-        
-        print("login ok")
+        print("kakao logined")       
         ##TODO 로그인 실패 처리하기
     
     ## 카카오 로그인 정보 초기화
@@ -66,8 +61,13 @@ class Alerter():
         context = emoji.get_emoji_regexp().sub(u'', context) #이모지 삭제
         link = d_msg.get('link').replace('https://','')
 
+        #폼이 열릴때까지 기다리기
+        wait = WebDriverWait(self.driver, 3)
+        wait.until(presence_of_element_located((By.CSS_SELECTOR, '#messageWrite')))
+
         #messageWrite 폼 채우기
         message = "[{title}] '{context}'의 판매가 시작되었습니다".format(title = title, context = context)
+        print("   ",message)
         self.driver.find_element_by_id('messageWrite').send_keys(message)
                 
         ##번들메세지 링크 보내기
@@ -84,18 +84,17 @@ class Alerter():
     ## 알림 보내기
     def __send_alert(self, _msg_list):
         site = 'https://center-pf.kakao.com/_xgWysxb/messages/new/feed'
-
+        print("SEND MESSAGES:")
         ## info_list에 있는 모든 정보들을 보내기
         for msg in _msg_list:
 
             ## 카톡 채널 접근하기
-            self.driver.implicitly_wait(3)
             self.driver.get(site)
 
             ## 알림 내용 채우기
             self.__fill_contents(site, msg)
             time.sleep(1)
-
+            
             ## 다음 버튼 누르기
             self.driver.find_element_by_xpath('//*[@id="mArticle"]/div/form/div[2]/span/div/button[2]').click()
             time.sleep(1)
@@ -114,7 +113,7 @@ class Alerter():
             ## 발송확인
             self.driver.find_element_by_xpath('/html/body/div[3]/div[2]/div/div/div[2]/button[2]').click()
             time.sleep(1)
-        
+        print("ALL MESSAGE SENT.")
         ##창 닫기
         self.driver.quit()
 
@@ -124,5 +123,4 @@ class Alerter():
     ## msg_list로 받은 모든 메세지 전송
     def send_all_msgs(self, _msg_list):
         self.__login()
-        # self.__send_alert(_msg_list)
-        
+        self.__send_alert(_msg_list)
