@@ -31,7 +31,8 @@ class Alerter():
         #options.add_argument('--disable-dev-shm-usage')
         options.add_argument('--disable-gpu')
         #options.add_argument('user-agent=Mozilla/5.0 (Macintosh; Intel Mac OS X 10_12_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/61.0.3163.100 Safari/537.36')
-        self.driver = webdriver.Chrome('../assets/chromedriver_linux64/chromedriver', options=options)
+        ## crontab 사용하려면 절대경로로
+        self.driver = webdriver.Chrome('/root/maskbot/assets/chromedriver_linux64/chromedriver', options=options)
         #self.driver = webdriver.Chrome('../assets/chromedriver_linux64/chromedriver')
         self.driver.get(self.LOGIN_INFO['link'])
         self.driver.set_page_load_timeout(30)
@@ -46,7 +47,7 @@ class Alerter():
     
     ## 카카오 로그인 정보 초기화
     def __set_login_info(self, _site):
-        with open('../data/login_info.json') as json_file:
+        with open('/root/maskbot/data/login_info.json') as json_file:
             json_data = json.load(json_file)
             self.LOGIN_INFO['id'] = json_data[_site]["id"]
             self.LOGIN_INFO['password']=json_data[_site]["password"]
@@ -92,9 +93,13 @@ class Alerter():
             self.driver.get(site)
 
             ## 알림 내용 채우기
-            self.__fill_contents(site, msg)
-            time.sleep(1)
-            
+            try:
+                self.__fill_contents(site, msg)
+                time.sleep(1)
+            except Exception as e:
+                print(e)
+                self.driver.quit()
+
             ## 다음 버튼 누르기
             self.driver.find_element_by_xpath('//*[@id="mArticle"]/div/form/div[2]/span/div/button[2]').click()
             time.sleep(1)

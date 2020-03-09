@@ -16,7 +16,7 @@ from alerter import Alerter
 class Bot():
     def __init__(self):
         ##self.crawl_site = 'https://coronamask.kr'
-        self.json_file = '../data/coronamask.json'
+        self.json_file = '/root/maskbot/data/coronamask.json'
         self.mask_list = {}     # 크롤링할 마스크 사이트 정보 {name: {content, link, sell_time}}
         self.alerter = Alerter()
         pass
@@ -61,7 +61,6 @@ class Bot():
         mask_time = KST.localize(mask_time)
         ##mask_time = mask_time.astimezone(KST)
         
-
         ## 마스크 판매시간 10분전이면 알림을 보내기
         diff = (mask_time - now).seconds // 60
         return ((mask_time >= now) and (diff <= 10))

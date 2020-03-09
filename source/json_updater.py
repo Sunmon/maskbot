@@ -7,20 +7,24 @@ from selenium.webdriver.support.ui import WebDriverWait
 
 def update_info():
 
-    print('try to get mask info from browser')
-    ## 브라우저 열기
-    driver = open_browser('https://coronamask.kr')
+    try:
+        ## 브라우저 열기
+        driver = open_browser('https://coronamask.kr')
+        
+        ## 마스크 리스트 초기화
+        mask_list = init_mask_list(driver)
 
-    ##TODO 아침 06:00마다 마스크 리스트 정보 업데이트하기
-    ## 마스크 리스트 초기화
-    mask_list = init_mask_list(driver)
+        ## 마스크 정보 저장하기
+        save_update_to_json(mask_list)
 
-    ## 마스크 정보 저장하기
-    save_update_to_json(mask_list)
-    print('updated mask info')
+    except Exception as e:
+        print(e)
+
+    finally:
+        driver.quit()
 
     ## driver 닫기
-    driver.quit()
+    ##driver.quit()
 
 ## 웹페이지 열기
 def open_browser(_link):
@@ -32,19 +36,21 @@ def open_browser(_link):
     options.add_argument('--single-process')
     options.add_argument('--dissable-dev-shm-usage')
     options.add_argument("user-agent=Mozilla/5.0 (Macintosh; Intel Mac OS X 10_12_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/61.0.3163.100 Safari/537.36")
-    driver = webdriver.Chrome('../assets/chromedriver_linux64/chromedriver', options=options) ## linux
+    ## crontab은 절대경로를 이용해야 한다
+    driver = webdriver.Chrome('/root/maskbot/assets/chromedriver_linux64/chromedriver', options=options)
+    ##driver = webdriver.Chrome('../assets/chromedriver_linux64/chromedriver', options=options) ## linux
     driver.set_page_load_timeout(60)
     try:
         driver.get(_link)
-    except Exception :
-        print("timeout error")
+    except Exception as e:
+        print(e)
     else:
         return driver
 
 ## mask_list를 json에 저장
 ## 게릴라판매는 직접 json만 수정하면 될수있도록하기위함
 def save_update_to_json(mask_list):
-    with open('../data/coronamask.json', 'w', encoding='utf-8') as _json_file:
+    with open('/root/maskbot/data/coronamask.json', 'w', encoding='utf-8') as _json_file:
         json.dump(mask_list, _json_file, ensure_ascii=False, indent = "\t")
 
 
