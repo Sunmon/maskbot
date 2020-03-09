@@ -7,6 +7,7 @@ from selenium.webdriver.support.ui import WebDriverWait
 
 def update_info():
 
+    print('try to get mask info from browser')
     ## 브라우저 열기
     driver = open_browser('https://coronamask.kr')
 
@@ -16,13 +17,13 @@ def update_info():
 
     ## 마스크 정보 저장하기
     save_update_to_json(mask_list)
-    
+    print('updated mask info')
+
     ## driver 닫기
     driver.quit()
 
 ## 웹페이지 열기
 def open_browser(_link):
-    print("try open browser")
     _link = 'https://coronamask.kr'
     options = webdriver.ChromeOptions()
     options.add_argument('--headless')
@@ -34,13 +35,11 @@ def open_browser(_link):
     driver = webdriver.Chrome('../assets/chromedriver_linux64/chromedriver', options=options) ## linux
     driver.set_page_load_timeout(60)
     try:
-        print("try open link")
         driver.get(_link)
     except Exception :
         print("timeout error")
     else:
-        print("page open")
-    return driver
+        return driver
 
 ## mask_list를 json에 저장
 ## 게릴라판매는 직접 json만 수정하면 될수있도록하기위함
