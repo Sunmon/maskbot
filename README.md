@@ -40,8 +40,8 @@ OS : Window(로컬) / Linux Ubuntu 18.04(호스팅)
 
 ## 정보
 
-coronamask.kr 제작자님 감사합니다.
+봇 제작자 : blackmilk274@gmail.com
 
-친구끼리 쓸 용도로 만드는거 허락받음
+coronamask.kr 개발자님 감사합니다.
 
 
