@@ -4,9 +4,7 @@
 
 coronamask.kr를 참고하여 마스크가 판매되기 10분 전에 알려준다.
 
-<사진>
-
-    
+<img src="assets/screenshot.jpg" width="50%">
     
 ## 이용방법
 
@@ -14,7 +12,7 @@ coronamask.kr를 참고하여 마스크가 판매되기 10분 전에 알려준�
 
 현재는 검색을 막아뒀다. 돈이 많이 들어서...
     
-    
+<img src="assets/how_to_use.jpg" width="50%">
     
     
 ## 개발환경
