@@ -2,7 +2,7 @@
 
 카카오톡 마스크 판매 알림 챗봇
 
-coronamask.kr를 참고하여 마스크가 판매되기 10분 전에 알려준다.
+coronamask.kr를 참고하여 마스크가 판매되기 10분 전에 알려줍니다.
 
 <img src="assets/screenshot.jpg" width="50%">
     
