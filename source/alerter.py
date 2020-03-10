@@ -61,13 +61,14 @@ class Alerter():
         context = d_msg.get('context')
         context = emoji.get_emoji_regexp().sub(u'', context) #이모지 삭제
         link = d_msg.get('link').replace('https://','')
+        link = link.replace('http://','')
 
         #폼이 열릴때까지 기다리기
         wait = WebDriverWait(self.driver, 3)
         wait.until(presence_of_element_located((By.CSS_SELECTOR, '#messageWrite')))
 
         #messageWrite 폼 채우기
-        message = "[{title}] '{context}'의 판매가 시작되었습니다".format(title = title, context = context)
+        message = "[{title}] '{context}'가 약 10분 후 판매됩니다".format(title = title, context = context)
         print("   ",message)
         self.driver.find_element_by_id('messageWrite').send_keys(message)
                 

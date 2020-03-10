@@ -21,6 +21,7 @@ def update_info():
         print(e)
 
     finally:
+        print('mask updated')
         driver.quit()
 
     ## driver 닫기

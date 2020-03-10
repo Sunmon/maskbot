@@ -2,15 +2,11 @@
 description : bot 클래스 : 크롤링하고 알람까지 하는 클래스. 관리자.
 manager클래스다. 메인에선 그냥 이 클래스의 함수만 실행시키면 된다.
 """
-# from my_alerter import Alerter
 import json
 import time
-#import re
+import re
 import datetime 
 from pytz import timezone, utc
-#from bs4 import BeautifulSoup
-#from selenium import webdriver
-#from selenium.webdriver.support.ui import WebDriverWait
 from alerter import Alerter
 
 class Bot():
@@ -43,6 +39,7 @@ class Bot():
                     self.mask_list[n]['alerted']=True
                 self.save_update_to_json()
 
+
     ## 알림 보낼 수 있는 시간인가 확인하여 true/false 리턴
     def is_time_to_alert(self, mask):
         ## 이미 알림을 보냈으면 알림 또 보낼 필요 없음
@@ -63,7 +60,8 @@ class Bot():
         
         ## 마스크 판매시간 10분전이면 알림을 보내기
         diff = (mask_time - now).seconds // 60
-        return ((mask_time >= now) and (diff <= 10))
+        day_diff = (mask_time - now).days
+        return ((day_diff==0) and (diff < 12))
 
 
     ## mask_list를 json에 저장

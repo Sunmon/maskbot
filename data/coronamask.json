@@ -1,30 +1,30 @@
 {
-	"다팜메디": {
-		"name": "다팜메디",
-		"context": " 미세먼지 마스크 KF94 대형(5매)",
-		"link": "https://smartstore.naver.com/dapharm/products/4834738614",
-		"sell_time": "2020/03/09 20:00",
-		"alerted": false
-	},
-	"미마몰": {
-		"name": "미마몰",
-		"context": " 미마마스크 미마 미세먼지 황사 보건용마스크 10개입(KF94)",
-		"link": "https://smartstore.naver.com/aseado/products/4837257765",
-		"sell_time": "2020/03/10 09:00",
-		"alerted": false
-	},
-	"늘해랑": {
-		"name": "늘해랑",
-		"context": " 김서림 방지 일반 1회용 마스크 (50매)",
-		"link": "https://smartstore.naver.com/neulhaerangmask/products/4632987981",
-		"sell_time": "2020/03/10 10:00",
-		"alerted": false
-	},
 	"네이버 스토어": {
 		"name": "네이버 스토어",
 		"context": " KF94 휴그린 미세먼지 방역마스크 중형 (1매)",
 		"link": "https://smartstore.naver.com/soommask/products/4828127993?NaPm=#DEFAULT",
 		"sell_time": "2020/03/10 13:00",
+		"alerted": true
+	},
+	"샤이맨": {
+		"name": "샤이맨",
+		"context": " 식약처 인정 KF94 브랜드 마스크 랜덤(1매)",
+		"link": "https://smartstore.naver.com/shyman/products/4843275185",
+		"sell_time": "2020/03/10 15:00",
+		"alerted": true
+	},
+	"오사자": {
+		"name": "오사자",
+		"context": " KF94 힐메이드 소형마스크 (5매)",
+		"link": "http://www.oh-saja.com/product/detail.html?product_no=133&cate_no=1&display_group=6",
+		"sell_time": "2020/03/10 18:00",
+		"alerted": true
+	},
+	"아이에뜨": {
+		"name": "아이에뜨",
+		"context": " 메이클린 KF94 황사 방역 마스크 (대형)",
+		"link": "https://www.i-ete.com/products/19",
+		"sell_time": "2020/03/11 10:00",
 		"alerted": false
 	},
 	"라오메뜨": {
@@ -34,19 +34,19 @@
 		"sell_time": "2020/03/11 10:30",
 		"alerted": false
 	},
-	"test1": {
-		"name": "test1",
-		"context": "test msg1",
+	"웰퓨어": {
+		"name": "웰퓨어",
+		"context": " 숨프리 황사 미세먼지마스크 KF94 KF80 5매 대형 소형 성인용 아동용",
 		"link": "https://smartstore.naver.com/desind/products/4844267787",
-		"sell_time": "2020/03/09 14:55",
-		"alerted": true
+		"sell_time": null,
+		"alerted": false
 	},
-	"test2": {
-		"name": "test2",
-		"context": "test msg2",
+	"닥터퓨리": {
+		"name": "닥터퓨리",
+		"context": "  KF94 미세먼지 황사마스크 (30매)",
 		"link": "https://smartstore.naver.com/mfbshop/products/4072573492",
-		"sell_time": "2020/03/09 14:55",
-		"alerted": true
+		"sell_time": null,
+		"alerted": false
 	},
 	"나록스": {
 		"name": "나록스",
