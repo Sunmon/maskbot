@@ -27,10 +27,7 @@ class Alerter():
         options = webdriver.ChromeOptions()
         options.add_argument('headless')
         options.add_argument('--no-sandbox')
-        #options.add_argument('--single-process')
-        #options.add_argument('--disable-dev-shm-usage')
         options.add_argument('--disable-gpu')
-        #options.add_argument('user-agent=Mozilla/5.0 (Macintosh; Intel Mac OS X 10_12_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/61.0.3163.100 Safari/537.36')
         ## crontab 사용하려면 절대경로로
         self.driver = webdriver.Chrome('/root/maskbot/assets/chromedriver_linux64/chromedriver', options=options)
         #self.driver = webdriver.Chrome('../assets/chromedriver_linux64/chromedriver')
@@ -105,13 +102,6 @@ class Alerter():
             self.driver.find_element_by_xpath('//*[@id="mArticle"]/div/form/div[2]/span/div/button[2]').click()
             time.sleep(1)
 
-            ## 테스트용 발송 버튼 누르기
-            # self.driver.find_element_by_xpath('//*[@id="mArticle"]/div/form/div[2]/button[3]').click()
-            # time.sleep(1)
-            ## 테스트 번호 입력 및 발송
-            # self.driver.find_element_by_id('phoneNumber').send_keys('01045435364')
-            # self.driver.find_element_by_xpath('/html/body/div[3]/div[2]/div/div[1]/div[1]/button').click()
-
             ## 발송 버튼 누르기
             self.driver.find_element_by_xpath('/html/body/div[2]/div[2]/div[2]/div/form/div[2]/button[4]').click()
             time.sleep(1)
@@ -119,6 +109,7 @@ class Alerter():
             ## 발송확인
             self.driver.find_element_by_xpath('/html/body/div[3]/div[2]/div/div/div[2]/button[2]').click()
             time.sleep(1)
+        
         print("ALL MESSAGE SENT.")
         ##창 닫기
         self.driver.quit()

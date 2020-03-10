@@ -24,8 +24,6 @@ def update_info():
         print('mask updated')
         driver.quit()
 
-    ## driver 닫기
-    ##driver.quit()
 
 ## 웹페이지 열기
 def open_browser(_link):
