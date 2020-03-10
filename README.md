@@ -38,6 +38,12 @@ OS : Window(로컬) / Linux Ubuntu 18.04(호스팅)
   - `http://`로 시작하는 주소의 경우 링크가 제대로 보내지지 않는 오류 수정
 
 
+## TODO
+
+- 로그인 실패 처리하기
+- kakao driver 인스턴스 대신 클래스 변수로 만들기??
+
+
 ## 정보
 
 봇 제작자 : blackmilk274@gmail.com
