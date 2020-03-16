@@ -53,6 +53,6 @@ OS : Window(로컬) / Linux Ubuntu 18.04(호스팅)
 
 봇 제작자 : blackmilk274@gmail.com
 
-coronamask.kr 개발자님 감사합니다.
+개발을 허용해주신 coronamask.kr 개발자님 감사합니다.
 
 
