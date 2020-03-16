@@ -5,12 +5,14 @@
 coronamask.kr를 참고하여 마스크가 판매되기 10분 전에 알려줍니다.
 
 <img src="assets/screenshot.jpg" width="50%">
+  
+  
     
 ## 이용방법
 
 카카오톡에서 마스크봇을 검색해서 친구추가
 
-현재는 검색을 막아뒀다. 돈이 많이 들어서...
+현재는 검색을 막아뒀습니다. 돈이 많이 들어서...ㅜㅜ
     
 <img src="assets/how_to_use.jpg" width="50%">
     
@@ -26,7 +28,10 @@ OS : Window(로컬) / Linux Ubuntu 18.04(호스팅)
 반복작업 : crontab
     
     
-    
+## 커스텀 방법
+
+`data/login_info.json'에 자신의 id/pw로 수정합니다.
+
     
 ## 업데이트 내역
 
