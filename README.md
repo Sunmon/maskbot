@@ -10,6 +10,14 @@ coronamask.kr를 참고하여 마스크가 판매되기 10분 전에 알려줍�
     
 ## 이용방법
 
+마스크봇 채널 링크로 접속
+
+채널 홈 : https://pf.kakao.com/_xgWysxb
+
+<img src = "assets/home.jpg" width= "50%">
+
+혹은
+
 카카오톡에서 마스크봇을 검색해서 친구추가
 
 현재는 검색을 막아뒀습니다. 돈이 많이 들어서...ㅜㅜ
