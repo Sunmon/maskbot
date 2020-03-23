@@ -8,13 +8,14 @@ import re
 import datetime 
 from pytz import timezone, utc
 from alerter import Alerter
+from telegram_alerter import TelegramAlerter
 
 class Bot():
     def __init__(self):
         ##self.crawl_site = 'https://coronamask.kr'
         self.json_file = '/root/maskbot/data/coronamask.json'
         self.mask_list = {}     # 크롤링할 마스크 사이트 정보 {name: {content, link, sell_time}}
-        self.alerter = Alerter()
+        self.alerter = TelegramAlerter()
         pass
         
     ## 크롤링 메소드
