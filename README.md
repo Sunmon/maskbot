@@ -52,6 +52,7 @@ OS : Window(로컬) / Linux Ubuntu 18.04(호스팅)
 
 - 2020.03.23.
   - 텔레그램 봇 추가
+  - 텔레그램 봇 링크 : https://t.me/joinchat/AAAAAEet7BOQSNRwtWUdwQ
 
 ## TODO
 
