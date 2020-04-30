@@ -4,7 +4,7 @@
 
 coronamask.kr를 참고하여 마스크가 판매되기 10분 전에 알려줍니다.
 
-<img src="assets/screenshot.jpg" width="50%">
+<center><img src="assets/screenshot.jpg" width="30%"></center>
   
   
     
@@ -14,7 +14,7 @@ coronamask.kr를 참고하여 마스크가 판매되기 10분 전에 알려줍�
 
 채널 홈 : https://pf.kakao.com/_xgWysxb
 
-<img src = "assets/home.jpg" width= "50%">
+<img src = "assets/home.jpg" width= "30%">
 
 혹은
 
@@ -22,7 +22,7 @@ coronamask.kr를 참고하여 마스크가 판매되기 10분 전에 알려줍�
 
 현재는 검색을 막아뒀습니다. 돈이 많이 들어서...ㅜㅜ
     
-<img src="assets/how_to_use.jpg" width="50%">
+<img src="assets/how_to_use.jpg" width="30%">
     
     
 ## 개발환경
