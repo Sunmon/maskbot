@@ -6,7 +6,8 @@ coronamask.kr를 참고하여 마스크가 판매되기 10분 전에 알려줍�
 
 <center><img src="assets/screenshot.jpg" width="30%"></center>
   
-  
+❗ ⚠ 2020.07.현재 마스크봇 서비스를 중단했습니다. 직접 서버에 돌려서 사용하세요
+
     
 ## 이용방법
 
@@ -53,11 +54,6 @@ OS : Window(로컬) / Linux Ubuntu 18.04(호스팅)
 - 2020.03.23.
   - 텔레그램 봇 추가
   - 텔레그램 봇 링크 : https://t.me/joinchat/AAAAAEet7BOQSNRwtWUdwQ
-
-## TODO
-
-- 로그인 실패 처리하기
-- kakao driver 인스턴스 대신 클래스 변수로 만들기??
 
 
 ## 정보
